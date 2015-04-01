@@ -100,6 +100,36 @@ body{
 
     background-color: #000000;
 }
+
+/* typeography */
+.BigText{
+    font-family: 'Corben', cursive;
+    font-weight: 700;
+    font-size: 1.48em;
+    text-shadow: rgb(224, 224, 224) 1px 1px 0; 
+}
+.smallFatText{
+    font-family: 'Corben', cursive;
+    font-weight: 700;
+    font-size: .7em; 
+    text-shadow: rgb(224, 224, 224) 1px 1px 0;
+}
+.smallText{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 0.7em; 
+    text-shadow: rgb(224, 224, 224) 1px 1px 0;
+}
+div.details > p  > a {
+    color: #DD3A29;
+    font-weight: 800;
+    text-decoration: none;
+}
+/* end of typeography */
+
+
+
+
 #phone{
     pointer-events: none;
     position: relative;
@@ -135,7 +165,7 @@ body{
 
 /*    year styles    */
 #yearContainer{
-
+    display:block;
 }
 .yearPlate{
     padding: 0;
@@ -146,9 +176,6 @@ body{
     background-image: url('../img/noisyTexture.png');
     border-bottom: 1px solid #B7AC97;
     overflow: hidden;
-}
-.yearPlate:hover{
-    background-image: url('../img/noisyTextureHover.png');
 }
 .yearPlate:hover{
     background-image: url('../img/noisyTextureHover.png');
@@ -172,10 +199,11 @@ body{
     /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
     border-radius: 10px; 
     text-align: center;
+    display: inline-block;
 
         .bigTextBox{
-        position: relative;
-        top:6px;
+            position: relative;
+            top:6px;
         }
         .ageBox{
             position: relative;
@@ -193,29 +221,7 @@ body{
         }
 }
 
-.BigText{
-    font-family: 'Corben', cursive;
-    font-weight: 700;
-    font-size: 1.48em;
-    text-shadow: rgb(224, 224, 224) 1px 1px 0; 
-}
-.smallFatText{
-    font-family: 'Corben', cursive;
-    font-weight: 700;
-    font-size: .7em; 
-    text-shadow: rgb(224, 224, 224) 1px 1px 0;
-}
-.smallText{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    font-size: 0.7em; 
-    text-shadow: rgb(224, 224, 224) 1px 1px 0;
-}
-div.details > p  > a {
-    color: #DD3A29;
-    font-weight: 800;
-    text-decoration: none;
-}
+
 .details{
     position: relative;
     top:-8px;
@@ -227,7 +233,17 @@ div.details > p  > a {
     padding-left: 10px;
     padding-top: 5px;
     text-shadow: rgb(224, 224, 224) 1px 1px 0;
-
+    display: inline-block;
+}
+#yearContainer > div > div.edit > a{
+    position: relative;
+    top: 28.5px;
+    margin-left: 6px;
+    background-image: url('../img/icon_edit.png');
+    background-repeat: no-repeat;
+    height: 19px;
+    width:17px;
+    display: inline-block;
 }
 
 
