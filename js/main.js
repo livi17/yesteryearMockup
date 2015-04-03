@@ -9,38 +9,56 @@
  *******************************************************************/
 
 
-document.addEventListener("DOMContentLoaded", function(event) {
+ document.addEventListener("DOMContentLoaded", function(event) {
 
-	var age;
-	var currYear = new Date().getFullYear();
-	var currMonth = new Date().getMonth();
-	var birthYear = 1973;
-	var birthMonth = 5;
+ 	var age;
+ 	var currYear = new Date().getFullYear();
+ 	var currMonth = new Date().getMonth();
+ 	var birthdate;
+ 	var birthYear = 1973;
+ 	var birthMonth = 5;
 
-	age = (currYear - birthYear);
-	if(birthMonth>currMonth){
-		age = age-1;
-	}
+ 	age = (currYear - birthYear);
+ 	if(birthMonth>currMonth){
+ 		age = age-1;
+ 	}
 
-	console.log("currYear: "+ currYear);
-	console.log("currMonth: "+ currMonth);
-	console.log("age: "+ age);
+ 	console.log("currYear: "+ currYear);
+ 	console.log("currMonth: "+ currMonth);
+ 	console.log("age: "+ age);
 
-	function functionButton(e){
-		console.log("e: "+ e);
-	}
+ 	function yearButton(e){
+ 		console.log("e: "+ e);
+ 	}
 
-	function functionClick(i) {
-        "use strict";
-        return function () {
-                functionButton("edit" + i);
-        };
-    }
+ 	function yearClick(i) {
+ 		"use strict";
+ 		return function () {
+ 			yearButton("edit" + i);
+ 		};
+ 	}
 
-    for (i = 1; i < 36; i++) {
-        var funcEl = document.getElementById("edit" + i);
-        funcEl.addEventListener("click", functionClick(i));
-    }
+ 	for (i = 1; i < 36; i++) {
+ 		var funcEl = document.getElementById("edit" + i);
+ 		funcEl.addEventListener("click", yearClick(i));
+ 	}
 
+ 	function dates(){
+ 		birthYear = birthdate.substr(0,4);
+ 		console.log("birthYear: "+birthYear);
+ 		birthMonth = birthdate.substr(5,2);
+ 		console.log("birthMonth: "+birthMonth);
+ 		birthDay = birthdate.substr(8,2);
+ 		console.log("birthMonth: "+birthDay);
+ 	}
 
-}); // end of DOMContentLoaded
+ 	var birthdateInput = document.getElementById("birthdate");
+ 	var submit = document.getElementById("submit");
+ 	submit.addEventListener("click", function(event) {
+ 		console.log("birthdate.value: "+ birthdateInput.value);
+ 		birthdate = birthdateInput.value;
+ 		console.log("birthdate type: "+ typeof birthdate);
+ 		dates();
+ 	}, false);
+
+ }); // end of DOMContentLoaded
