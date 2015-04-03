@@ -7,58 +7,73 @@
  *   Licensed under the MIT license                                 *
  *                                                                  *
  *******************************************************************/
+document.addEventListener("DOMContentLoaded", function(event) {
 
+    var age;
+    var currYear = new Date().getFullYear();
+    var currMonth = new Date().getMonth();
+    var birthdate;
+    var birthYear;
+    var birthMonth;
+    var birthDay;
 
- document.addEventListener("DOMContentLoaded", function(event) {
+    age = (currYear - birthYear);
+    if (birthMonth > currMonth) {
+        age = age - 1;
+    }
 
- 	var age;
- 	var currYear = new Date().getFullYear();
- 	var currMonth = new Date().getMonth();
- 	var birthdate;
- 	var birthYear = 1973;
- 	var birthMonth = 5;
+    console.log("currYear: " + currYear);
+    console.log("currMonth: " + currMonth);
+    console.log("age: " + age);
 
- 	age = (currYear - birthYear);
- 	if(birthMonth>currMonth){
- 		age = age-1;
- 	}
+    function yearButton(e) {
+        console.log("e: " + e);
+    }
 
- 	console.log("currYear: "+ currYear);
- 	console.log("currMonth: "+ currMonth);
- 	console.log("age: "+ age);
+    function yearClick(i) {
+        "use strict";
+        return function() {
+            yearButton("edit" + i);
+        };
+    }
 
- 	function yearButton(e){
- 		console.log("e: "+ e);
- 	}
+    for (i = 1; i < 36; i++) {
+        var funcEl = document.getElementById("edit" + i);
+        funcEl.addEventListener("click", yearClick(i));
+    }
 
- 	function yearClick(i) {
- 		"use strict";
- 		return function () {
- 			yearButton("edit" + i);
- 		};
- 	}
+    function dates() {
+        var y = document.getElementsByTagName("select")[0].value;
+        var m = document.getElementsByTagName("select")[1].value;
+        var d = document.getElementsByTagName("select")[2].value;
+        console.log("y: " + y);
+        birthYear = y;
+        birthMonth = m;
+        birthDay = d;
+    }
 
- 	for (i = 1; i < 36; i++) {
- 		var funcEl = document.getElementById("edit" + i);
- 		funcEl.addEventListener("click", yearClick(i));
- 	}
+    var birthdateInput = document.getElementById("birthdate");
+    var submit = document.getElementById("submit");
+    submit.addEventListener("click", function(event) {
+        dates();
+        $("#intro").fadeOut("slow", function() {
+            // Animation complete.
+        });
+        $("#yearContainer").fadeIn("slow", function() {
+            // Animation complete.
+        });
+    }, false);
 
- 	function dates(){
- 		birthYear = birthdate.substr(0,4);
- 		console.log("birthYear: "+birthYear);
- 		birthMonth = birthdate.substr(5,2);
- 		console.log("birthMonth: "+birthMonth);
- 		birthDay = birthdate.substr(8,2);
- 		console.log("birthMonth: "+birthDay);
- 	}
+    var back = document.getElementById("back");
+    back.addEventListener("click", function(event) {
+    	$("#monthContainer").fadeOut("slow", function() {
+            // Animation complete.
+        });
+        $("#yearContainer").fadeIn("slow", function() {
+            // Animation complete.
+        });
+    }, false);
 
- 	var birthdateInput = document.getElementById("birthdate");
- 	var submit = document.getElementById("submit");
- 	submit.addEventListener("click", function(event) {
- 		console.log("birthdate.value: "+ birthdateInput.value);
- 		birthdate = birthdateInput.value;
- 		console.log("birthdate type: "+ typeof birthdate);
- 		dates();
- 	}, false);
+    $("#birthdate").birthdayPicker();
 
- }); // end of DOMContentLoaded
+}); // end of DOMContentLoaded
