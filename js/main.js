@@ -74,6 +74,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
     }, false);
 
+    var back2 = document.getElementById("back2");
+    back2.addEventListener("click", function(event) {
+        $("#dayContainer").fadeOut("slow", function() {
+            // Animation complete.
+        });
+        $("#monthContainer").fadeIn("slow", function() {
+            // Animation complete.
+        });
+    }, false);
+
     $("#birthdate").birthdayPicker();
 
 }); // end of DOMContentLoaded
