@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var birthYear;
     var birthMonth;
     var birthDay;
+    var editToggle = false;
+    var clickedYear;
 
     age = (currYear - birthYear);
     if (birthMonth > currMonth) {
@@ -28,12 +30,47 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function yearButton(e) {
         console.log("e: " + e);
+        nextClick = parseInt(e.substr(4,2),10);
+        console.log("nextClick: " + nextClick);
+        clickedYear = (birthYear+nextClick);
+        console.log("clickedYear: " + clickedYear);
+        $("#yearContainer").fadeOut("slow", function() {
+            // Animation complete.
+        });
+        $("#monthContainer").fadeIn("slow", function() {
+            // Animation complete.
+        });
+        var yearHead = document.getElementById("BigTextYear");
+        yearHead.innerHTML = clickedYear;
+
+
+        var yearAge = document.getElementById("smallFatTextAge");
+        yearAge.innerHTML = nextClick;
+        var yearGrade = document.getElementById("smallFatTextGrade");
+
+        if(nextClick == 5){
+            yearGrade.innerHTML = "K";
+        } else if(nextClick > 5 && nextClick < 17){
+            yearGrade.innerHTML = (nextClick-4);
+        } else if (nextClick == 17){
+            yearGrade.innerHTML = "U1";
+        } else if (nextClick == 18){
+            yearGrade.innerHTML = "U2";
+        }else if (nextClick == 19){
+            yearGrade.innerHTML = "U3";
+        } else if (nextClick == 20){
+            yearGrade.innerHTML = "U4";
+        }else {
+            yearGrade.innerHTML = "-";
+        }
+        $( "#screen" ).scrollTop( 0 );
     }
 
     function yearClick(i) {
         "use strict";
         return function() {
             yearButton("edit" + i);
+
         };
     }
 
@@ -43,11 +80,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     function dates() {
-        var y = document.getElementsByTagName("select")[0].value;
-        var m = document.getElementsByTagName("select")[1].value;
-        var d = document.getElementsByTagName("select")[2].value;
+        var m = document.getElementsByTagName("select")[0].value;
+        var d = document.getElementsByTagName("select")[1].value;
+        var y = document.getElementsByTagName("select")[2].value;
         console.log("y: " + y);
-        birthYear = y;
+        console.log("m: " + m);
+        console.log("d: " + d);
+        birthYear = parseInt(y,10);;
         birthMonth = m;
         birthDay = d;
     }
@@ -82,6 +121,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $("#monthContainer").fadeIn("slow", function() {
             // Animation complete.
         });
+    }, false);
+
+    var editor = document.getElementById("editor");
+    editor.addEventListener("click", function(event) {
+        if(editToggle==false){
+            editToggle = true;
+        $( "#editor" ).animate({
+            top: "-30",
+          }, 350, function() {
+            // Animation complete.
+          });
+    } else {
+        editToggle = false;
+        $( "#editor" ).animate({
+            top: "418",
+          }, 350, function() {
+            // Animation complete.
+          });
+
+    }
+
     }, false);
 
     $("#birthdate").birthdayPicker();

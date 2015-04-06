@@ -144,6 +144,13 @@ div.details > p  > a {
 .center{
     text-align: center;
 }
+
+#BigTextYear{
+    .BigText 
+}
+#smallFatTextAge, #smallFatTextGrade{
+    .smallFatText
+}
 /* end of typeography */
 
 
@@ -185,7 +192,7 @@ div.details > p  > a {
 
 /* intro styles */
 #intro{
-    display:none;
+    display:block;
     position: relative;
     top: 40px;
     margin: 0 auto;
@@ -293,6 +300,8 @@ div.details > p  > a {
     width:17px;
     display: inline-block;
 }
+
+/* month styles */
 #monthContainer{
   display:none
 }
@@ -308,26 +317,26 @@ div.details > p  > a {
     font-size: 1em;
 }
 
-#month-header{
+#monthContainer > #month-header{
     position: relative;
     height: 37px;
     background-color: #BFB29D;
 }
-#month-header > div.ageBox{
+#monthContainer > #month-header > div.ageBox{
     text-align: center;
     display:inline-block;
     position: relative;
     top:2px;
     left:10px;
 }
-#month-header > div.bigTextBox{
+#monthContainer > #month-header > div.bigTextBox{
     text-align: center;
     display:inline-block;
     position: relative;
     top:2px;
     left:60px;   
 }
-#month-header > div.gradeBox{
+#monthContainer > #month-header > div.gradeBox{
     text-align: center;
     display:inline-block;
     position: relative;
@@ -354,6 +363,82 @@ div.details > p  > a {
     padding-right: 20px;
 }
 
+
+/* day styles */
+#dayContainer{
+  display: none;
+}
+#dayContainer > #month-header{
+    text-align: center;
+    position: relative;
+    height: 37px;
+    background-color: #BFB29D;
+}
+#dayContainer > #month-header > div.ageBox{
+    display: inline-block;
+    position: relative;
+    left:-8px;
+    top:2px;
+}
+#dayContainer > #month-header > div.bigTextBox{
+    text-align: center;
+    display: inline-block;
+}
+
+#dayContainer > #month-header > div.gradeBox{
+    display: inline-block;
+    position: relative;
+
+    top:2px;
+}
+
+#dayContainer > #month-header > div.bigTextBox > div{
+    width:166px;
+    margin:0 auto;
+    position: relative;
+    text-align: center;
+}
+
+#dayContainer > #month-header > #back2 {
+  position: relative;
+  left:-10px;
+}
+
+#editor{
+  display: none;
+  position:relative;
+  top:418px;
+  z-index: 20;
+}
+#editor-holder{
+  width:287px;
+  height:448px;
+  background-image: url('../img/edit_screen.png');
+  z-index: 10;
+  overflow: hidden;
+}
+
+#editor-header{
+      text-align: center;
+      height:30px;
+      width:287px;
+      background-color: #53B4A0;
+      color: #ffffff;
+      line-height: 30px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 400;
+      font-size: 1em; 
+    }
+.edit_icon{
+      position:relative;
+      top:5px;
+      left:5px;
+      background-image: url('../img/icon_edit.png');
+      background-repeat: no-repeat;
+      height: 19px;
+      width:17px;
+      display: inline-block;
+}
 
 /* Custom Scrollbar for Chrome */
 ::-webkit-scrollbar {
